@@ -18,19 +18,6 @@ This is a web application built with [Astro](https://astro.build/) that allows u
 - **Vanilla JavaScript / TypeScript** – Used for password generation and interactivity.
 - **No Backend or Database** – Everything runs entirely client-side in the browser.
 
-## 📁 Project Structure
-
-/
-├── public/ # Static assets
-├── src/
-│ ├── components/ # Reusable UI components
-│ ├── layouts/ # Optional layout wrappers
-│ ├── pages/ # Main page(s) rendered by Astro
-│ ├── styles/ # Custom Tailwind or SCSS files
-│ └── utils/ # Password generation logic and helpers
-├── astro.config.mjs # Astro configuration
-└── package.json # Project metadata and dependencies
-
 ## 🛠️ Getting Started
 
 ```bash
@@ -43,6 +30,7 @@ npm install
 
 # Run the development server
 npm run dev
+```
 
 📦 Build for Production
 
