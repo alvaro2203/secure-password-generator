@@ -1,0 +1,106 @@
+---
+// Password Strength Indicator Component
+// Displays visual feedback about password strength with detailed analysis
+---
+
+<div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700" role="region" aria-labelledby="strength-heading">
+  <div class="flex items-center justify-between mb-2">
+    <span id="strength-heading" class="text-sm font-medium text-gray-700 dark:text-gray-300">Password Strength</span>
+    <span id="strength-level" class="text-sm font-semibold text-gray-900 dark:text-white" aria-live="polite">-</span>
+  </div>
+  
+  <!-- Strength Bar -->
+  <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700 mb-2" role="progressbar" aria-labelledby="strength-heading" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div 
+      id="strength-bar" 
+      class="h-2 rounded-full transition-all duration-500 ease-in-out"
+      style="width: 0%"
+      aria-hidden="true"
+    ></div>
+  </div>
+  
+  <!-- Strength Score -->
+  <div class="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400 mb-2">
+    <span>Score: <span id="strength-score" aria-live="polite">0</span>/100</span>
+    <span>Crack Time: <span id="crack-time" aria-live="polite">-</span></span>
+  </div>
+  
+  <!-- Feedback List -->
+  <div id="strength-feedback" class="hidden" role="region" aria-labelledby="feedback-heading">
+    <div id="feedback-heading" class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Suggestions:</div>
+    <ul id="feedback-list" class="text-xs text-gray-600 dark:text-gray-400 space-y-1" aria-live="polite">
+    </ul>
+  </div>
+</div>
+
+<script>
+  import { calculatePasswordStrength } from '../utils/passwordStrength';
+  
+  /**
+   * Updates the strength indicator based on password analysis
+   */
+  function updateStrengthIndicator(password: string) {
+    const result = calculatePasswordStrength(password);
+    
+    // Update elements
+    const strengthLevel = document.getElementById('strength-level');
+    const strengthBar = document.getElementById('strength-bar');
+    const strengthScore = document.getElementById('strength-score');
+    const crackTime = document.getElementById('crack-time');
+    const feedbackContainer = document.getElementById('strength-feedback');
+    const feedbackList = document.getElementById('feedback-list');
+    
+    if (!strengthLevel || !strengthBar || !strengthScore || !crackTime || !feedbackContainer || !feedbackList) {
+      return;
+    }
+    
+    // Update strength level and score
+    strengthLevel.textContent = result.level;
+    strengthScore.textContent = result.score.toString();
+    crackTime.textContent = result.estimatedCrackTime;
+    
+    // Update strength bar
+    strengthBar.style.width = `${result.score}%`;
+    strengthBar.parentElement?.setAttribute('aria-valuenow', result.score.toString());
+    
+    // Set bar color based on strength level
+    const barColors = {
+      'Very Weak': 'bg-red-500',
+      'Weak': 'bg-red-400',
+      'Fair': 'bg-yellow-500',
+      'Good': 'bg-blue-500',
+      'Strong': 'bg-green-500',
+      'Very Strong': 'bg-green-600'
+    };
+    
+    // Remove all color classes
+    Object.values(barColors).forEach(color => {
+      strengthBar.classList.remove(color);
+    });
+    
+    // Add current color class
+    strengthBar.classList.add(barColors[result.level]);
+    
+    // Update feedback
+    if (result.feedback.length > 0) {
+      feedbackList.innerHTML = result.feedback
+        .map(item => `<li class="flex items-start"><span class="text-yellow-500 mr-1" aria-hidden="true">•</span>${item}</li>`)
+        .join('');
+      feedbackContainer.classList.remove('hidden');
+    } else {
+      feedbackContainer.classList.add('hidden');
+    }
+    
+    // Add animation to the bar
+    strengthBar.classList.add('animate-pulse-subtle');
+    setTimeout(() => {
+      strengthBar.classList.remove('animate-pulse-subtle');
+    }, 1000);
+  }
+  
+  // Make function globally available
+  (window as any).updateStrengthIndicator = updateStrengthIndicator;
+  
+  // Initialize with empty password
+  updateStrengthIndicator('');
+</script>
