@@ -32,10 +32,12 @@ npm install
 npm run dev
 ```
 
-📦 Build for Production
+## 📦 Build for Production
 
+```bash
 npm run build
+```
 
-📄 License
+## 📄 License
 
 This project is open source and available under the MIT License.
