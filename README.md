@@ -1,48 +1,53 @@
-# Astro Starter Kit: Basics
+# 🔐 Secure Password Generator
 
-```sh
-npm create astro@latest -- --template basics
-```
+This is a web application built with [Astro](https://astro.build/) that allows users to generate secure and customizable passwords directly in the browser.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Password Length Control**: Select the desired number of characters using a numeric input or slider.
+- **Include Numbers**: Option to include numeric digits (`0–9`) in the generated password.
+- **Include Special Characters**: Option to include symbols like `!@#$%^&*()` for stronger passwords.
+- **Include Uppercase Letters**: Toggle to include capital letters (`A–Z`) alongside lowercase.
+- **Instant Generation**: Generates a new password with a single click, based on the selected options.
+- **Copy to Clipboard**: Easily copy the generated password with one click and receive visual feedback.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🧱 Tech Stack
 
-## 🚀 Project Structure
+- **Astro** – Frontend framework for fast static web apps.
+- **Tailwind CSS** – Utility-first CSS framework for rapid styling.
+- **Vanilla JavaScript / TypeScript** – Used for password generation and interactivity.
+- **No Backend or Database** – Everything runs entirely client-side in the browser.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Project Structure
 
-```text
 /
-├── public/
-│   └── favicon.svg
+├── public/ # Static assets
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+│ ├── components/ # Reusable UI components
+│ ├── layouts/ # Optional layout wrappers
+│ ├── pages/ # Main page(s) rendered by Astro
+│ ├── styles/ # Custom Tailwind or SCSS files
+│ └── utils/ # Password generation logic and helpers
+├── astro.config.mjs # Astro configuration
+└── package.json # Project metadata and dependencies
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🛠️ Getting Started
 
-## 🧞 Commands
+```bash
+# Clone the repository
+git clone https://github.com/your-username/secure-password-generator.git
+cd secure-password-generator
 
-All commands are run from the root of the project, from a terminal:
+# Install dependencies
+npm install
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Run the development server
+npm run dev
 
-## 👀 Want to learn more?
+📦 Build for Production
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+npm run build
+
+📄 License
+
+This project is open source and available under the MIT License.
