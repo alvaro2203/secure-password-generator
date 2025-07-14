@@ -1,27 +1,35 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PasswordGenerator from '../components/PasswordGenerator.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
-import Toast from '../components/Toast.astro';
+import Layout from "../layouts/Layout.astro";
+import PasswordGenerator from "../components/PasswordGenerator.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Toast from "../components/Toast.astro";
 ---
 
-<Layout 
+<Layout
   title="Secure Password Generator - Create Strong, Secure Passwords Online"
-  description="Generate cryptographically secure passwords with customizable length and character types. Free online password generator with strength analysis. All generation happens locally in your browser for maximum privacy and security."
+  description="Secure Password Generator – Create Strong, Cryptographically Secure Passwords Online."
 >
   <!-- Skip to main content link for accessibility -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50">
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50"
+    title="Skip to main content"
+  >
     Skip to main content
   </a>
 
   <!-- Navigation -->
-  <nav class="fixed top-4 right-4 z-50" role="navigation" aria-label="Theme settings">
+  <nav
+    class="fixed top-4 right-4 z-50"
+    role="navigation"
+    aria-label="Theme settings"
+  >
     <ThemeToggle />
   </nav>
-  
+
   <!-- Toast Notifications -->
   <Toast />
-  
+
   <!-- Main Content -->
   <main id="main-content" role="main">
     <PasswordGenerator />
