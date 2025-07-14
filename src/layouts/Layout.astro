@@ -1,13 +1,13 @@
 ---
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
 export interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = 'Secure Password Generator - Create Strong, Secure Passwords Online',
-  description = 'Generate cryptographically secure passwords with customizable length and character types. Free online password generator with strength analysis. All generation happens locally in your browser for maximum privacy and security.'
+const {
+  title = "Secure Password Generator - Create Strong, Secure Passwords Online",
+  description = "Secure Password Generator – Create Strong, Cryptographically Secure Passwords Online.",
 } = Astro.props;
 ---
 
@@ -18,46 +18,64 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="password generator, secure password, strong password, random password, cryptography, online security, password strength, password creator, secure password maker, free password generator" />
+    <meta
+      name="keywords"
+      content="password generator, secure password, strong password, random password, cryptography, online security, password strength, password creator, secure password maker, free password generator"
+    />
     <meta name="author" content="Secure Password Generator" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://secure-password-generator-coral.vercel.app" />
-    
+    <link
+      rel="canonical"
+      href="https://secure-password-generator-coral.vercel.app"
+    />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://secure-password-generator-coral.vercel.app" />
+    <meta
+      property="og:url"
+      content="https://secure-password-generator-coral.vercel.app"
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://secure-password-generator-coral.vercel.app/og-image.jpg" />
+    <meta
+      property="og:image"
+      content="https://secure-password-generator-coral.vercel.app/og-image.jpg"
+    />
     <meta property="og:site_name" content="Secure Password Generator" />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://secure-password-generator-coral.vercel.app" />
+    <meta
+      name="twitter:url"
+      content="https://secure-password-generator-coral.vercel.app"
+    />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://secure-password-generator-coral.vercel.app/twitter-image.jpg" />
+    <meta
+      name="twitter:image"
+      content="https://secure-password-generator-coral.vercel.app/twitter-image.jpg"
+    />
     <meta name="twitter:creator" content="@passwordgen" />
-    
+
     <!-- Additional SEO -->
     <meta name="application-name" content="Secure Password Generator" />
     <meta name="apple-mobile-web-app-title" content="Password Generator" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Secure Password Generator",
-        "description": "Generate cryptographically secure passwords with customizable options",
+        "description": "Secure Password Generator – Create Strong, Cryptographically Secure Passwords Online",
         "url": "https://secure-password-generator-coral.vercel.app",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "Any",
@@ -77,45 +95,50 @@ const {
         ]
       }
     </script>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#8B5CF6" />
     <meta name="msapplication-TileColor" content="#8B5CF6" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.webmanifest" />
-    
+
     <!-- Prevent indexing of development builds -->
     <!-- <meta name="robots" content="noindex, nofollow" /> -->
   </head>
-  <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <body
+    class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+  >
     <slot />
     <Analytics />
     <!-- Global Scripts -->
     <script>
       // Prevent Flash of Unstyled Content (FOUC)
-      document.documentElement.classList.add('loading');
-      
+      document.documentElement.classList.add("loading");
+
       // Remove loading class after page loads
-      window.addEventListener('load', () => {
-        document.documentElement.classList.remove('loading');
+      window.addEventListener("load", () => {
+        document.documentElement.classList.remove("loading");
       });
-      
+
       // Enhanced focus management for accessibility
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-          document.body.classList.add('user-is-tabbing');
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Tab") {
+          document.body.classList.add("user-is-tabbing");
         }
       });
-      
-      document.addEventListener('mousedown', () => {
-        document.body.classList.remove('user-is-tabbing');
+
+      document.addEventListener("mousedown", () => {
+        document.body.classList.remove("user-is-tabbing");
       });
     </script>
   </body>
@@ -126,53 +149,53 @@ const {
   .loading {
     opacity: 0;
   }
-  
+
   .loading body {
     visibility: hidden;
   }
-  
+
   /* Enhanced focus styles for accessibility */
   .user-is-tabbing *:focus {
-    outline: 2px solid #8B5CF6 !important;
+    outline: 2px solid #8b5cf6 !important;
     outline-offset: 2px !important;
   }
-  
+
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: #f1f5f9;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
   }
-  
+
   .dark ::-webkit-scrollbar-track {
     background: #1e293b;
   }
-  
+
   .dark ::-webkit-scrollbar-thumb {
     background: #475569;
   }
-  
+
   .dark ::-webkit-scrollbar-thumb:hover {
     background: #64748b;
   }
-  
+
   /* Animation utilities */
   @keyframes fadeIn {
     from {
@@ -182,7 +205,7 @@ const {
       opacity: 1;
     }
   }
-  
+
   @keyframes slideUp {
     from {
       transform: translateY(10px);
@@ -193,16 +216,17 @@ const {
       opacity: 1;
     }
   }
-  
+
   @keyframes pulseSubtle {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
       opacity: 0.8;
     }
   }
-  
+
   /* Focus trap for modals */
   .focus-trap {
     position: fixed;
@@ -214,7 +238,7 @@ const {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
   }
-  
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -226,12 +250,12 @@ const {
       scroll-behavior: auto !important;
     }
   }
-  
+
   /* High contrast mode */
   @media (prefers-contrast: high) {
     :root {
-      --tw-prose-body: theme('colors.gray.900');
-      --tw-prose-headings: theme('colors.gray.900');
+      --tw-prose-body: theme("colors.gray.900");
+      --tw-prose-headings: theme("colors.gray.900");
     }
   }
 </style>

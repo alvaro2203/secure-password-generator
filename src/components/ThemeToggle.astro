@@ -3,60 +3,90 @@
 // Provides a button to cycle through light, dark, and system themes
 ---
 
-<button 
+<button
   id="theme-toggle"
   class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
   aria-label="Toggle theme"
   title="Toggle theme"
 >
-  <svg id="theme-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  <svg
+    id="theme-icon"
+    class="w-5 h-5 text-gray-700 dark:text-gray-300"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+    ></path>
   </svg>
 </button>
 
 <script>
-  import { initializeTheme, toggleTheme, getCurrentTheme, getThemeDisplayName } from '../services/themeService';
-  
+  import {
+    initializeTheme,
+    toggleTheme,
+    getCurrentTheme,
+    getThemeDisplayName,
+  } from "../services/themeService";
+
   // Initialize theme on page load
   initializeTheme();
-  
+
   // Theme toggle functionality
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+
   // Update icon based on current theme
   function updateThemeIcon() {
     const theme = getCurrentTheme();
-    const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
+    const isDark =
+      theme === "dark" ||
+      (theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+
     if (isDark) {
       // Moon icon for dark theme
-      themeIcon?.setAttribute('d', 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
+      themeIcon?.setAttribute(
+        "d",
+        "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+      );
     } else {
       // Sun icon for light theme
-      themeIcon?.setAttribute('d', 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z');
+      themeIcon?.setAttribute(
+        "d",
+        "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      );
     }
-    
+
     // Update tooltip
     const displayName = getThemeDisplayName(theme);
-    themeToggle?.setAttribute('title', `Current theme: ${displayName}. Click to cycle themes.`);
+    themeToggle?.setAttribute(
+      "title",
+      `Current theme: ${displayName}. Click to cycle themes.`
+    );
   }
-  
+
   // Handle theme toggle
-  themeToggle?.addEventListener('click', () => {
+  themeToggle?.addEventListener("click", () => {
     const newTheme = toggleTheme();
     updateThemeIcon();
-    
+
     // Add visual feedback
-    themeToggle?.classList.add('animate-pulse');
+    themeToggle?.classList.add("animate-pulse");
     setTimeout(() => {
-      themeToggle?.classList.remove('animate-pulse');
+      themeToggle?.classList.remove("animate-pulse");
     }, 200);
   });
-  
+
   // Update icon on page load
   updateThemeIcon();
-  
+
   // Listen for system theme changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeIcon);
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", updateThemeIcon);
 </script>
