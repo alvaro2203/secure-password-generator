@@ -1,0 +1,126 @@
+---
+// Back to Top Button Component
+// Floating button that appears when user scrolls down
+---
+
+<button
+  id="back-to-top"
+  class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 opacity-0 invisible translate-y-4 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg
+    class="w-6 h-6 mx-auto"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  function initializeBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    if (!backToTopButton) return;
+
+    let isVisible = false;
+    const scrollThreshold = 300; // Show button after scrolling 300px
+
+    function toggleButtonVisibility() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const shouldShow = scrollTop > scrollThreshold;
+
+      if (shouldShow && !isVisible) {
+        // Show button
+        isVisible = true;
+        backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+        backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+      } else if (!shouldShow && isVisible) {
+        // Hide button
+        isVisible = false;
+        backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+      // Add click animation
+      backToTopButton.classList.add('scale-95');
+      setTimeout(() => {
+        backToTopButton.classList.remove('scale-95');
+      }, 150);
+    }
+
+    // Listen for scroll events
+    let ticking = false;
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          toggleButtonVisibility();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Handle button click
+    backToTopButton.addEventListener('click', scrollToTop);
+
+    // Handle keyboard navigation
+    backToTopButton.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Initial check
+    toggleButtonVisibility();
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', initializeBackToTop);
+</script>
+
+<style>
+  /* Ensure smooth transitions */
+  #back-to-top {
+    transition-property: opacity, visibility, transform, background-color, box-shadow;
+  }
+
+  /* Hover animation */
+  #back-to-top:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Active state */
+  #back-to-top:active {
+    transform: translateY(0) scale(0.95);
+  }
+
+  /* Focus state for accessibility */
+  #back-to-top:focus {
+    transform: translateY(-2px);
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    #back-to-top {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
