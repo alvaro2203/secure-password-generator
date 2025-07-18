@@ -1,0 +1,192 @@
+---
+// Features Section Component
+// Highlights key features of the password generator
+---
+
+<section
+  id="features"
+  class="py-20 bg-white dark:bg-gray-800"
+  aria-labelledby="features-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2
+        id="features-heading"
+        class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+      >
+        Why Choose Our Password Generator?
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Built with security, privacy, and usability in mind. Generate strong passwords 
+        with complete confidence in your data protection.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1: One-click Copy -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            One-Click Password Copy
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          Instantly copy generated passwords to your clipboard with a single click. 
+          Works seamlessly across all modern browsers with visual confirmation.
+        </p>
+      </article>
+
+      <!-- Feature 2: Cryptographically Secure -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            Cryptographically Secure Generation
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          Uses the Web Crypto API for true random number generation, ensuring maximum 
+          entropy and unpredictability in every password created.
+        </p>
+      </article>
+
+      <!-- Feature 3: Fully Client-Side -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            Fully Client-Side Logic
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          Your passwords never leave your device. All generation happens locally in your 
+          browser with zero data transmission to any server.
+        </p>
+      </article>
+
+      <!-- Feature 4: Customizable Options -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            Customizable Length & Characters
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          Control password length (4-128 characters) and choose from uppercase, lowercase, 
+          numbers, and special characters to meet any security requirement.
+        </p>
+      </article>
+
+      <!-- Feature 5: Accessible Design -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            Accessible & Responsive Design
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          WCAG compliant interface with full keyboard navigation, screen reader support, 
+          and responsive design that works perfectly on all devices.
+        </p>
+      </article>
+
+      <!-- Feature 6: Password Strength Analysis -->
+      <article class="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+            Real-Time Strength Analysis
+          </h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          Get instant feedback on password strength with detailed analysis, crack time 
+          estimates, and suggestions for improvement.
+        </p>
+      </article>
+    </div>
+
+    <!-- Additional Benefits -->
+    <div class="mt-16 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Additional Benefits
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Everything you need for secure password management
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-800 rounded-full mb-3 shadow-md">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Lightning Fast</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Instant password generation</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-800 rounded-full mb-3 shadow-md">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Works Offline</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">No internet required</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-800 rounded-full mb-3 shadow-md">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Mobile Ready</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Perfect on any device</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-800 rounded-full mb-3 shadow-md">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Free Forever</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">No hidden costs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
