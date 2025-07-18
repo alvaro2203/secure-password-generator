@@ -67,12 +67,36 @@
         </div>
       </div>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden">
+      <!-- Right side: Theme toggle and mobile menu -->
+      <div class="flex items-center space-x-2">
+        <!-- Theme Toggle Button -->
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >
+          <svg
+            id="theme-icon"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
         <button
           type="button"
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 transition-all duration-200"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 transition-all duration-200"
           aria-controls="mobile-menu"
           aria-expanded="false"
           aria-label="Toggle navigation menu"
@@ -165,6 +189,16 @@
 </nav>
 
 <script>
+  import {
+    initializeTheme,
+    toggleTheme,
+    getCurrentTheme,
+    getThemeDisplayName,
+  } from "../services/themeService";
+
+  // Initialize theme on page load
+  initializeTheme();
+
   // Mobile menu toggle functionality
   function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -211,6 +245,62 @@
         toggleMenu();
       }
     });
+  }
+
+  // Theme toggle functionality
+  function initializeThemeToggle() {
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+
+    // Update icon based on current theme
+    function updateThemeIcon() {
+      const theme = getCurrentTheme();
+      const isDark =
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      if (isDark) {
+        // Moon icon for dark theme
+        themeIcon?.setAttribute(
+          "d",
+          "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+        );
+      } else {
+        // Sun icon for light theme
+        themeIcon?.setAttribute(
+          "d",
+          "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        );
+      }
+
+      // Update tooltip
+      const displayName = getThemeDisplayName(theme);
+      themeToggle?.setAttribute(
+        "title",
+        `Current theme: ${displayName}. Click to cycle themes.`
+      );
+    }
+
+    // Handle theme toggle
+    themeToggle?.addEventListener("click", () => {
+      const newTheme = toggleTheme();
+      updateThemeIcon();
+
+      // Add visual feedback
+      themeToggle?.classList.add("animate-pulse");
+      setTimeout(() => {
+        themeToggle?.classList.remove("animate-pulse");
+      }, 200);
+    });
+
+    // Update icon on page load
+    updateThemeIcon();
+
+    // Listen for system theme changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", updateThemeIcon);
   }
 
   // Smooth scrolling for navigation links
@@ -267,6 +357,7 @@
   // Initialize all functionality
   document.addEventListener("DOMContentLoaded", () => {
     initializeMobileMenu();
+    initializeThemeToggle();
     initializeSmoothScrolling();
     initializeActiveLinks();
   });
